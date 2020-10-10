@@ -4,14 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0BBA9EB0-EC67-4636-958B-589AE217A522}</ProjectGuid>
+    <ProjectGuid>{2625BA96-D77E-4747-9764-CA5CDF690CD9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>IOManager</RootNamespace>
-    <AssemblyName>IOManager</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <RootNamespace>HardwareDriver</RootNamespace>
+    <AssemblyName>HardwareDriver</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,9 +31,21 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="ServerSuperIO, Version=2.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <HintPath>..\packages\ServerSuperIO.2.0.0\lib\net40\ServerSuperIO.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Numerics" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,21 +54,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
-    <Compile Include="Common\ErrorManager.cs" />
+    <Compile Include="Common\JsonManager.cs" />
     <Compile Include="Communicate\ICommunicate.cs" />
-    <Compile Include="Communicate\Serial\SerialIO.cs" />
-    <Compile Include="Communicate\Serial\SerialSettings.cs" />
-    <Compile Include="Communicate\TCP\TCPIO.cs" />
-    <Compile Include="Communicate\TCP\TCPSettings.cs" />
-    <Compile Include="Protocol\IInstruction.cs" />
-    <Compile Include="Manager\IManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Communicate\HTTP\" />
-    <Folder Include="Communicate\Modbus\" />
-    <Folder Include="Communicate\UDP\" />
+    <Folder Include="Communicate\Net\" />
+    <Folder Include="Communicate\UART\" />
+    <Folder Include="Protocol\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DesignerUML.cd" />
+    <None Include="Properties\app.config" />
+    <None Include="Properties\packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
